@@ -1,0 +1,36 @@
+<h2>待辦事項</h2>
+
+<%=form_tag  todos_path,method:"post" do %>
+<%=text_field_tag "todo[thing]"%>
+
+<%=submit_tag"update"%>
+<%end%>
+
+<%= link_to "View All", root_path%>
+
+
+<%= form_tag root_path,method: "get" do%>
+<%=hidden_field_tag :time2 , "false"%>
+<%= submit_tag "undo"%>
+<%end%>
+
+<%= form_tag root_path,method: "get" do%>
+<%=hidden_field_tag :time1 , "true"%>
+<%= submit_tag "finish"%>
+<%end%>
+
+<% @todos.each do|todo|%>
+<%= todo.thing %>
+<% if todo.time ==="true"%>
+<%= 'finish'%>
+<% else %>
+<%= 'undo'%>
+<% end %>
+
+
+
+<%= link_to "Edit", edit_todo_path(todo) %>
+<%= link_to "Delete", todo_path(todo),method:"delete" %>
+<%= button_to "change status", change_todos_path(todo), method: "get"%>
+<%end%>
+

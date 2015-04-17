@@ -1,0 +1,11 @@
+<% if submit_tag =="undo"%>
+<h2>finish</h2>
+<% @todos.each do|todo|%>
+
+<%end %>
+<% else %>
+<h2>undo</h2>
+<% @todos.each do|todo|%>
+<%= todo.thing %>
+<% end %>
+<% end%>
