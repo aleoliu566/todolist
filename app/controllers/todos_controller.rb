@@ -1,6 +1,5 @@
 class TodosController < ApplicationController
 	
-
 	def show
 		@todo=Todo.where(:time =>"false")
 	end

@@ -7,7 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<%if user_signed_in? %>
+hello <%=current_user.name %>
+<%= link_to "sign out", destroy_user_session_path, method: "delete" %>
+<%else %>
+<%= link_to "register", new_user_registration_path %>
+<%= link_to "sign in", new_user_session_path %>
+<%end%>
 <%= yield %>
 
 </body>
